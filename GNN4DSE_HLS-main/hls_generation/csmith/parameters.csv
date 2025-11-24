@@ -1,0 +1,37 @@
+Probabilities;change;default_conf;hls_conf;test
+more_struct_union_type_prob ;disable;50;0;ok
+safe_ops_signed_prob;disable;50;0;ok
+select_deref_pointer_prob;disable;80;0;ok
+pointer_as_ltype_prob;disable;50;0;ok
+union_as_ltype_prob ;disable;25;0;ok
+float_as_ltype_prob ;;0;20;ok
+;;;;
+statement_ifelse_prob ;+;15 - 0 = 15;45;ok
+statement_for_prob ;-;30 - 15 = 15;4;ok
+statement_return_prob ;=;35 - 30  = 5;5;ok
+statement_continue_prob;-;40 - 35 = 5;1;ok
+statement_break_prob;-;45 - 40 = 5;1;ok
+statement_goto_prob;-;50 - 45 = 5;1;ok
+statement_arrayop_prob ;-;60 - 50 = 10;3;ok
+statement_assign_prob;=;100 - 60 = 40;40;ok
+;;;;
+binary_bit_and_prob;disable;1;0;ok
+binary_bit_or_prob;disable;1;0;ok
+;;;;
+Flags;;;;
+--no-packed-struct;;;;
+--no-embedded-assigns;;;;
+--no-argc;;;;
+--no-safe-math;;;;
+--no-pointers;;;;
+--float;;;;
+--muls;;;;
+--divs;;;;
+--max-funcs;5;;;
+--max-block-depth;2;3;;
+--max-array-dim;3;;;
+--max-expr-complexity;2;5;;
+;;;;
+;;;;
+Example Usage;;;;
+csmith > out.c --probability-configuration hls_conf.txt --muls --divs --no-packed-struct --no-safe-math --no-embedded-assigns --no-argc --no-pointers --max-funcs 2 --max-block-depth 3 --max-array-dim 3 --max-expr-complexity 10 --concise --nomain;;;;
